@@ -69,44 +69,21 @@ String.prototype.toLocaleProperCaseOrLowerCase = function () {
 };
 
 function translateYandex(fromLoc, fromText, toLoc, onTranslate) {
-    var ERR_OK = 200,
-        ERR_KEY_INVALID = 401,
-        ERR_KEY_BLOCKED = 402,
-        ERR_DAILY_REQ_LIMIT_EXCEEDED = 403,
-        ERR_DAILY_CHAR_LIMIT_EXCEEDED = 404,
-        ERR_TEXT_TOO_LONG = 413,
-        ERR_UNPROCESSABLE_TEXT = 422,
-        ERR_LANG_NOT_SUPPORTED = 501,
-        errCodes = {
-            200: 'Operation completed successfully.',
-            401: 'Invalid API key.',
-            402: 'This API key has been blocked.',
-            403: 'You have reached the daily limit for requests (including calls of the detect method).',
-            404: 'You have reached the daily limit for the volume of translated text (including calls of the detect method).',
-            413: 'The text size exceeds the maximum.',
-            422: 'The text could not be translated.',
-            501: 'The specified translation direction is not supported.'
-        };
-
-    var jqxhr = $.getJSON("https://translate.yandex.net/api/v1.5/tr.json/translate", {
+    $.getJSON("https://translation.googleapis.com/language/translate/v2", {
             key: YANDEX_TRANSLATOR_KEY,
-            lang: fromLoc + '-' + toLoc,
-            text: fromText
-        },
-        function (json) {
-            if (json.code === ERR_OK) {
-                onTranslate(json.text.join("\n"));
-            }
-            else {
-                window.console.log("Yandex API: " + json.code + ': ' + errCodes[json.code] + "\n");
-            }
+            source: fromLoc,
+            target: toLoc,
+            q: fromText,
+            prettyprint: false
+        })
+        .done(function( json ) {
+            var translations = json.data.translations[0].translatedText;
+            onTranslate(translations);
+            console.log( "JSON Data: " + json.data );
+          })
+        .fail(function (json) {
+            console.log( "Translation FAIL: " + json );
         });
-
-    jqxhr.done(function () {
-    });
-
-    jqxhr.fail(function () {
-    });
 }
 
 function startsWithWord2(word1, word2, prefix) {
