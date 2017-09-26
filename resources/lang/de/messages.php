@@ -82,7 +82,7 @@ TEXT
     'missing'                   => 'Fehlend',
     'missmatched-quotes'        => 'Unpassende oder fehlende Anführungszeichen im Attribut :string',
     'movekeys'                  => 'Schlüssel verschieben',
-    'powered-by-yandex'         => '<a href="http://translate.yandex.com/">Powered by Yandex.Translate</a>',
+    'powered-by-yandex'         => '<a href="https://translate.google.com/">Powered by Google Translate</a>',
     'preview'                   => 'Vorschau',
     'primary-locale'            => 'Primäre Lokale',
     'publish'                   => 'Gruppe veröffentlichen',

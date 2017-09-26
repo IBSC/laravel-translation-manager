@@ -85,7 +85,7 @@ TEXT
     'missing'                       => 'Missing',
     'missmatched-quotes'            => 'mismatched or missing quotes in :string attribute',
     'movekeys'                      => 'Move Keys',
-    'powered-by-yandex'             => '<a href="http://translate.yandex.com/">Powered by Yandex.Translate</a>',
+    'powered-by-yandex'             => '<a href="https://translate.google.com/">Powered by Google Translate</a>',
     'preview'                       => 'Preview',
     'primary-locale'                => 'Primary',
     'publish'                       => 'Publish Group',
