@@ -47,5 +47,5 @@
         "post-update-cmd": [
         ]
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
